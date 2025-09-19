@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<style>
+  :root{
+    --bg:#000000;
+    --fg:#ffffff;
+    --muted:#d8d8d8;
+    --accent1:#4fc3f7; /* light blue */
+    --accent2:#ffd54f; /* yellow */
+    --accent3:#ef5350; /* red */
+    --accent4:#81c784; /* green */
+    --accent5:#ba68c8; /* purple */
+    --card:#0b0b0b;
+    --rule:#222;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    line-height:1.4;
+    display:flex;
+    justify-content:center;
+  }
+  .wrap{
+    width:min(1000px,96vw);
+    padding:18px 14px 28px;
+  }
+  header{
+    text-align:center;
+    margin-bottom:14px;
+  }
+  h1{
+    margin:0 0 6px 0;
+    font-size:clamp(26px,6vw,44px);
+    letter-spacing:.5px;
+  }
+  .subtitle{
+    color:var(--muted);
+    font-size:clamp(13px,3.3vw,16px);
+  }
+  .grid{
+    display:grid;
+    gap:12px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .panel{
+    background:var(--card);
+    border:2px solid var(--rule);
+    border-radius:14px;
+    padding:14px;
+  }
+  .col-12{grid-column:span 12}
+  .col-6{grid-column:span 6}
+  .col-4{grid-column:span 4}
+  .col-8{grid-column:span 8}
+  @media (max-width:880px){
+    .col-6,.col-4,.col-8{grid-column:span 12}
+  }
+  h2{
+    margin:0 0 10px 0;
+    font-size:clamp(18px,4.2vw,24px);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .tag{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.4px;
+    color:#000;
+  }
+  .a1{background:var(--accent1)}
+  .a2{background:var(--accent2)}
+  .a3{background:var(--accent3)}
+  .a4{background:var(--accent4)}
+  .a5{background:var(--accent5)}
+  ul,ol{margin:8px 0 0 18px; padding:0}
+  li{margin:6px 0}
+  .row{
+    display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+  }
+  .chip{
+    border:2px solid var(--rule);
+    border-radius:10px;
+    padding:6px 10px;
+    font-weight:700;
+    font-size:13px;
+    color:var(--fg);
+    background:#111111;
+  }
+  .stamp{
+    padding:4px 8px; border:2px solid var(--rule); border-radius:8px; background:#111; font-size:12px; font-weight:800;
+  }
+  .mini{
+    font-size:13px; color:var(--muted);
+  }
+  .divider{
+    height:2px; background:var(--rule); margin:10px 0 6px 0; border-radius:2px;
+  }
+  .icon{
+    width:10px; height:10px; border-radius:2px; display:inline-block; margin-right:8px;
+  }
+  .b{background:var(--accent1)}
+  .y{background:var(--accent2)}
+  .r{background:var(--accent3)}
+  .g{background:var(--accent4)}
+  .p{background:var(--accent5)}
+  .note{
+    border-left:6px solid var(--accent2);
+    padding:8px 10px;
+    background:#0f0f0f;
+    border-radius:8px;
+    font-size:14px;
+    color:var(--muted);
+  }
+  .flex2{display:flex; gap:10px; flex-wrap:wrap}
+  .cardlet{
+    flex:1 1 220px;
+    min-width:200px;
+    background:#0f0f0f;
+    border:2px dashed var(--rule);
+    border-radius:12px;
+    padding:10px;
+  }
+  .titlebar{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;
+  }
+  .titlebar .right{font-size:12px; color:var(--muted)}
+  .qr{
+    border:2px solid var(--rule);
+    width:42px; height:42px; border-radius:6px;
+    background:
+      conic-gradient(#fff 0 25%, transparent 0 50%, #fff 0 75%, transparent 0) center/10px 10px repeat;
+  }
+  footer{
+    text-align:center; margin-top:12px; color:var(--muted); font-size:12px;
+  }
+</style>
+</head>
+<body>
+  <main class="wrap" role="document" aria-label="Anchor chart: Passport to Our Class">
+    <header>
+      <h1>Passport to Our Class</h1>
+    
+<h2>
+   An icebreaker game to learn key info on Day 1
+  </h2>
+  <h2>
+  </h2>
+  <h3>
+   Overview
+  </h3>
+  <p>
+   Passport to Our Class is a fast, low-stress game that lets you collect essential information about each ESL student while they practice simple speaking and listening.
+  </p>
+  <p>
+   Students “travel” between classroom stations to get passport stamps, sharing short answers and artifacts. Works in person or online.
+  </p>
+  <h3>
+   Goals
+  </h3>
+  <h4>
+   Gather key info: name, preferred name, languages, prior schooling, interests, goals, support needs, contact details
+  </h4>
+  <h4>
+   Lower first-day anxiety through movement, choice, and short turns
+  </h4>
+  <h4>
+   Build classroom community and useful language routines
+  </h4>
+  <h3>
+   Materials
+  </h3>
+  <ul>
+   <li>
+    Paper “passport” booklet (half-sheet folded) or a one-page template
+   </li>
+   <li>
+    Stamp icons or stickers (or teacher initials)
+   </li>
+   <li>
+    Station signs and simple question cards
+   </li>
+   <li>
+    Optional: QR codes linking to short forms for contact details
+   </li>
+   <li>
+    Online version: slides with station titles, breakout rooms, and a shared Jamboard/Padlet
+   </li>
+   <li>
+    Passport template (one page, double-sided if possible)
+   </li>
+  </ul>
+  <h4>
+   Front
+  </h4>
+  <ul>
+   <li>
+    Photo box or self-portrait
+   </li>
+   <li>
+    Name and preferred name
+   </li>
+   <li>
+    Pronouns (optional)
+   </li>
+  </ul>
+  <h3>
+   Inside
+  </h3>
+  <ul>
+   <li>
+    Languages I speak (rate: beginner, okay, strong)
+   </li>
+   <li>
+    Country/region(s) lived in
+   </li>
+   <li>
+    Last school grade completed and favorite subject
+   </li>
+   <li>
+    I learn best when…
+   </li>
+   <li>
+    Interests outside school
+   </li>
+   <li>
+    Personal goal for English this term
+   </li>
+   <li>
+    Support that helps me (visuals, extra time, buddy, dictionary, subtitles)
+   </li>
+   <li>
+    Contact: parent/guardian name, phone/email, preferred language
+   </li>
+  </ul>
+  <h3>
+   Back
+  </h3>
+  <ul>
+   <li>
+    “Ask me about…” prompt
+   </li>
+   <li>
+    Space for teacher notes
+   </li>
+   <li>
+    Station setup (5–7 stations, 3–4 minutes each)
+   </li>
+  </ul>
+  <h3>
+   Name and Pronunciation
+  </h3>
+  <p>
+   Prompt: Say your preferred name. Teach the teacher a gesture for the stress. Record phonetic hint.
+Product: Teacher writes phonetic spelling; student records a 5-second audio (phone or classroom device).
+  </p>
+  <h3>
+   Languages and Home
+  </h3>
+  <p>
+   Prompt: What languages do you use at home/school/online?
+Product: Color in a small world map; list languages with comfort level.
+  </p>
+  <h3>
+   School Snapshot
+  </h3>
+  <p>
+   Prompt: Last grade completed, favorite subject, one challenge.
+Product: Sticker next to favorite subject; note any gaps in schooling.
+  </p>
+  <h3>
+   Learning Preferences
+  </h3>
+  <p>
+   Prompt: Choose two cards: “I learn by…” (pictures, speaking, writing, pair work, videos, demos).
+Product: Paste or draw the icons in the passport.
+  </p>
+  <h3>
+   Interests and Strengths
+  </h3>
+  <p>
+   Prompt: Pick two icons that show hobbies or talents; say one sentence about each.
+Product: Icons added; teacher notes vocabulary connected to interests.
+  </p>
+  <h3>
+   English Goal
+  </h3>
+  <p>
+   Prompt: Choose a goal card or write one: speak to a new friend, understand science videos, pass ACCESS level X.
+Product: One clear, measurable goal and a confidence rating (1–5).
+  </p>
+  <h3>
+   Support and Contact
+  </h3>
+  <p>
+   Prompt: Which supports help you? Who should school contact?
+Product: Student circles supports; quick QR form for parent contact in home language.
+  </p>
+  <h3>
+   Game mechanics
+  </h3>
+  <p>
+   Students carry their passport. Each station visit earns a stamp.
+Pair students with a language buddy for support.
+Teacher and aides circulate, listen, and jot notes.
+  </p>
+  <h3>
+   Online version
+  </h3>
+  <p>
+   Use breakout rooms as stations with a shared slide for prompts.
+A simple form collects contact info; a shared board collects interests and goals.
+Students take a selfie or draw an avatar on a slide.
+  </p>
+  <h3>
+   Data capture for the teacher
+  </h3>
+  <p>
+   Snap photos of key passport pages or collect them at the end.
+Transfer essentials into a roster: name/pronunciation, languages, preference icons, goal, supports, contact.
+Note potential groupings and needed accommodations.
+  </p>
+  <h4>
+   Why it works
+  </h4>
+  <p>
+   Short, repeated speaking turns build confidence.
+Choice and visuals reduce language load.
+Stations give you comprehensive info without long forms, while keeping day one fun.
+  </p>
+    <section class="grid">
+      <div class="panel col-12">
+        <h2><span class="tag a1">Overview</span> What we’re doing</h2>
+        <div class="row">
+          <span class="chip">Move through stations</span>
+          <span class="chip">Collect “stamps”</span>
+          <span class="chip">Share short answers</span>
+          <span class="chip">Have fun</span>
+        </div>
+        <div class="divider"></div>
+        <div class="mini">Teacher tip: Pair newcomers with a language buddy. Use visuals and gestures. Keep turns under 45 seconds.</div>
+      </div>
+
+      <div class="panel col-8">
+        <h2><span class="tag a2">Goals</span> What we learn about you</h2>
+        <ul>
+          <li><span class="icon b"></span>Name, preferred name, and pronunciation</li>
+          <li><span class="icon y"></span>Languages used at home, school, and online</li>
+          <li><span class="icon g"></span>Last grade completed and favorite subject</li>
+          <li><span class="icon p"></span>How you learn best (pictures, pair work, videos, etc.)</li>
+          <li><span class="icon b"></span>Interests and strengths</li>
+          <li><span class="icon y"></span>Your English goal for this term</li>
+          <li><span class="icon g"></span>Supports that help (extra time, buddy, dictionary)</li>
+          <li><span class="icon r"></span>Family contact and preferred language</li>
+        </ul>
+      </div>
+
+      <div class="panel col-4">
+        <h2><span class="tag a3">Materials</span></h2>
+        <ul>
+          <li>Mini “passport” page</li>
+          <li>Stickers or teacher initials as stamps</li>
+          <li>Station signs + question cards</li>
+          <li>Optional QR for contact form <span class="qr" aria-hidden="true"></span></li>
+        </ul>
+      </div>
+
+      <div class="panel col-12">
+        <h2><span class="tag a4">Stations</span> Visit 5–7 stations (3–4 minutes each)</h2>
+        <div class="flex2">
+          <div class="cardlet">
+            <div class="titlebar">
+              <strong>1) Name & Pronunciation</strong>
+              <span class="stamp">STAMP</span>
+            </div>
+            <ul>
+              <li>Say your preferred name.</li>
+              <li>Teach the stress with a clap or tap.</li>
+              <li>Record a phonetic hint or 5‑sec audio.</li>
+            </ul>
+          </div>
+          <div class="cardlet">
+            <div class="titlebar">
+              <strong>2) Languages & Home</strong>
+              <span class="stamp">STAMP</span>
+            </div>
+            <ul>
+              <li>List languages you use (home/school/online).</li>
+              <li>Color a small world map to show places lived.</li>
+              <li>Rate comfort: beginner / okay / strong.</li>
+            </ul>
+          </div>
+          <div class="cardlet">
+            <div class="titlebar">
+              <strong>3) School Snapshot</strong>
+              <span class="stamp">STAMP</span>
+            </div>
+            <ul>
+              <li>Last grade completed and favorite subject.</li>
+              <li>One challenge at school.</li>
+            </ul>
+          </div>
+          <div class="cardlet">
+            <div class="titlebar">
+              <strong>4) Learning Preferences</strong>
+              <span class="stamp">STAMP</span>
+            </div>
+            <ul>
+              <li>Choose two: pictures, speaking, writing, pair work, videos, demos.</li>
+              <li>Add icons to your passport.</li>
+            </ul>
+          </div>
+          <div class="cardlet">
+            <div class="titlebar">
+              <strong>5) Interests & Strengths</strong>
+              <span class="stamp">STAMP</span>
+            </div>
+            <ul>
+              <li>Pick two hobbies/talents icons.</li>
+              <li>Say one sentence about each.</li>
+            </ul>
+          </div>
+          <div class="cardlet">
+            <div class="titlebar">
+              <strong>6) English Goal</strong>
+              <span class="stamp">STAMP</span>
+            </div>
+            <ul>
+              <li>Choose or write a goal (e.g., talk to a new friend, understand science videos).</li>
+              <li>Rate confidence 1–5.</li>
+            </ul>
+          </div>
+          <div class="cardlet">
+            <div class="titlebar">
+              <strong>7) Support & Contact</strong>
+              <span class="stamp">STAMP</span>
+            </div>
+            <ul>
+              <li>Circle supports that help you.</li>
+              <li>Share family contact and preferred language.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel col-6">
+        <h2><span class="tag a5">Language Support</span> Sentence starters</h2>
+        <ul>
+          <li>I prefer to be called…</li>
+          <li>At home, we speak…</li>
+          <li>My favorite subject is… because…</li>
+          <li>I learn best when…</li>
+          <li>One of my goals is…</li>
+          <li>A support that helps me is…</li>
+        </ul>
+      </div>
+
+      <div class="panel col-6">
+        <h2><span class="tag a1">Teacher Moves</span> Make it smooth</h2>
+        <ul>
+          <li>Model each station in 30 seconds before starting.</li>
+          <li>Use timers and music cues for rotations.</li>
+          <li>Pair by language when possible; rotate roles: speaker, listener, helper.</li>
+          <li>Jot quick notes on a roster as you circulate.</li>
+        </ul>
+      </div>
+
+      <div class="panel col-12">
+        <h2><span class="tag a2">Online Option</span> Run it on video</h2>
+        <ul>
+          <li>Create breakout rooms as “stations” with one slide per room.</li>
+          <li>Use a shared board (Padlet/Slides) for interests and goals.</li>
+          <li>Collect contact info with a simple form in the student’s language.</li>
+          <li>Keep turns short; use reaction emojis for quick stamps.</li>
+        </ul>
+        <div class="note">Privacy tip: Avoid recording personal details in public chats. Use a private form or direct message for contact info.</div>
+      </div>
+    </section>
+
+    <footer>
+      Passport = movement + choice + short turns. Day 1 data without stress.
+    </footer>
+  </main>
+</body>
+</html>

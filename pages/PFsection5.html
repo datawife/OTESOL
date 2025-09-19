@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      body {
+  
+            background-image: 
+	url('../images/bgi.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Indie Flower', cursive;
+            color: #fff;
+            margin: 20px 0 15px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1abc9c;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #1abc9c;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #333;
+        }
+        h3 {
+            font-size: 1.7rem;
+            margin-top: 25px;
+            color: #48c9b0;
+        }
+        h4 {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            color: #76d7c4;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+      .container {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .highlight {
+            background-color: #16a085;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+     table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #345;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #16a085;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #1e1e1e;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .pillars-grid, .professionalism-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .card {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #1abc9c;
+        }
+        .card h4 {
+            margin-top: 0;
+            color: #48c9b0;
+        }
+     
+        .flowchart {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .flow-step {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+            position: relative;
+            padding-left: 30px;
+        }
+        .flow-step:before {
+            content: "→";
+            position: absolute;
+            left: 10px;
+            color: #1abc9c;
+            font-weight: bold;
+        }
+        .flow-step:last-child {
+            border-bottom: none;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .icon-item {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 3px solid #48c9b0;
+        }
+        .icon-item h4 {
+            margin-top: 0;
+            color: #76d7c4;
+        }
+          .indie-flower-conclusion {
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.9rem;
+            line-height: 1.8;
+            text-align: center;
+            margin: 20px 0;
+            padding: 30px;
+            border-left: 4px solid #4CAF50;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(42, 68, 173, 0.3);
+        }
+        
+        .attribution {
+            font-family: 'Indie Flower', cursive;
+            text-align: right;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .indie-flower-conclusion {
+                font-size: 2.2rem;
+                padding: 20px;
+            }}
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Classroom Management & Professionalism</h1>
+        
+      
+            <h2>Introduction</h2>
+	       <div class="indie-flower-conclusion">
+               Management is the foundation for engagement, not a response to disruption. For me, management is not about control, but about orchestration. It is the framework of clear expectations, mutual respect, and procedural routines that creates the safe and predictable environment for students to feel secure enough to take the linguistic risks.
+            </div>
+               <p>This section clarifies my beliefs and practices for creating safe, equitable, and learning-focused environments with multilingual learners (children and adults). Drawing on Module 5, I outline routines, relational strategies, and professional norms.</p>
+                <div class="section">
+            <h2>My Management Framework (3 Rs)</h2>
+            
+            <div class="pillars-grid">
+                <div class="card">
+                    <h4>1) Relationships</h4>
+                    <ul>
+                        <li>Learn and correctly pronounce names; greet at the door; brief check-ins.</li>
+                        <li>Know students' goals; use interest surveys; reflect back strengths publicly and privately.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>2) Routines</h4>
+                    <ul>
+                        <li>Explicitly teach entry, materials, transitions, partner talk, tech use, and help-seeking.</li>
+                        <li>Visual cues and multilingual signage; rehearsals with feedback; posted agenda with icons.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>3) Responsive Support</h4>
+                    <ul>
+                        <li>Two-step correction: prompt (private, specific) → choice/off-ramp (move seat, quick break).</li>
+                        <li>Restorative follow-up: quick reparation and reset, not lengthy punishment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+     
+        <div class="section">
+            <h2>Working with Adults vs. Children: Adjustments and Applications</h2>
+            
+            <table>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Working with Adults</th>
+                    <th>Working with Children</th>
+                </tr>
+                <tr>
+                    <td>Establishing Norms</td>
+                    <td><strong>Collaborative Negotiation.</strong> We democratically establish a "Classroom Charter" together. Adults have ownership over their learning environment.</td>
+                    <td><strong>Clear, Consistent Guidance.</strong> I establish simple, positive rules (e.g., "Be a good friend," "Try your best"). We model and practice routines extensively.</td>
+                </tr>
+                <tr>
+                    <td>Building Rapport</td>
+                    <td><strong>Partnering.</strong> Rapport is built on mutual respect for life experience. I position myself as a facilitator and expert guide, but not an authority figure.</td>
+                    <td><strong>Nurturing.</strong> Rapport is built on warmth, consistency, and emotional safety. I am a caregiver and a guide.</td>
+                </tr>
+                <tr>
+                    <td>Managing Engagement</td>
+                    <td><strong>Leveraging Autonomy.</strong> I give choices in topics, projects, or activities. Breaks are self-regulated. The focus is on intrinsic motivation and goal attainment.</td>
+                    <td><strong>Structured Pacing.</strong> I manage energy levels with varied activities (e.g., song, movement, quiet reading). Breaks are scheduled. The focus is on extrinsic rewards (praise, stickers) that build intrinsic motivation.</td>
+                </tr>
+                <tr>
+                    <td>Preventing Issues</td>
+                    <td><strong>Addressing the "Why."</strong> If an adult is disengaged, I inquire privately. The cause is often external (stress, fatigue) and can be addressed with flexibility.</td>
+                    <td><strong>Redirection & Proximity.</strong> I use non-verbal cues and redirect off-task behavior quickly and positively. The cause is often developmental needs (attention, energy).</td>
+                </tr>
+                <tr>
+                    <td>Language of Direction</td>
+                    <td><strong>Requests & Rationale.</strong> "Could we all please focus here? This grammar point is crucial for your upcoming presentations."</td>
+                    <td><strong>Clear, Positive Commands.</strong> "Eyes on me, please. Show me your listening ears."</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Visual Example: The "Flow" of My Classroom</h2>
+            
+            <div class="flowchart">
+                <div class="flow-step">Lesson Begins</div>
+                <div class="flow-step">Established Routine: "Welcome & Word of the Day"</div>
+                <div class="flow-step">Clear Visual Agenda on Board</div>
+                <div class="flow-step">Teacher-Led Instruction (I Do) - 10 min</div>
+                <div class="flow-step">Collaborative Practice (We Do) - 15 min → Teacher circulates, provides support</div>
+                <div class="flow-step">Independent/Group Task (You Do) - 20 min → Teacher facilitates & assesses</div>
+                <div class="flow-step">Established Routine: "Exit Ticket & Preview"</div>
+            </div>
+            
+            <p class="quote">A predictable lesson flow manages expectations and reduces anxiety for all ages, creating a structured space for active learning.</p>
+        </div>
+        
+      
+        
+   <div class="section">
+            <h2>Sample Norms and Routines (Ready to Post)</h2>
+            
+            <div class="norms-grid">
+                <div class="card">
+                    <h4>Our agreements</h4>
+                    <ul>
+                        <li>Be ready: materials out, phones on silent, agenda on screen.</li>
+                        <li>Be respectful: one voice at a time, listen to understand, use sentence frames to build on ideas.</li>
+                        <li>Be responsible: ask for help, fix mistakes, help peers.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Talk moves</h4>
+                    <ul>
+                        <li>"I agree with ___ because…"</li>
+                        <li>"I want to add…"</li>
+                        <li>"Can you clarify what you meant by…?"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Attention signal</h4>
+                    <ul>
+                        <li>Teacher: "Eyes here in 3–2–1." Class: "Ready."</li>
+                        <li>Visual cue + timer to transition.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <p class="attribution">- A slide from my presentation on Classroom Management (see Appendix)</p>
+         <div class="CM_pres" align="center">
+              
+                <img src="../images/5_2.jpg"   text=classroom rules.png" alt="Classroom rules">
+            </div>
+        <div class="section">
+            <h2>Intervention Ladder (Both Contexts)</h2>
+            
+            <ol>
+                <li>Pre-correct: remind of the next step and model.</li>
+                <li>Proximity and nonverbal cue.</li>
+                <li>Private, specific prompt with choice.</li>
+                <li>Brief reset (change seat/role; quick break).</li>
+                <li>Reflect–repair: short conference; plan supports; document and follow up.</li>
+            </ol>
+        </div>
+        
+       <div class="section">
+            <h2>Professionalism, Work Ethic, and Collaboration</h2>
+            
+        
+            <div class="professionalism-grid">
+                <div class="card">
+                    <h4>Work Ethic</h4>
+                    <p>Be prepared, punctual, and present.  Reflect continuously on your practice, seeking feedback from students and peers to grow. <br>Be a lifelong learner, constantly exploring new methodologies and resources to better serve the students.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Professionalism</h4>
+                    <ul>
+                        <li><strong>Confidentiality:</strong> Student progress and personal information are held in strict confidence.</li>
+                        <li><strong>Respectful Communication:</strong> TESOL teacher communicates with students, parents, and colleagues with cultural sensitivity, empathy, and respect.</li>
+                        <li><strong>Commitment to Boundaries:</strong> TESOL teacher maintains appropriate professional boundaries while fostering a supportive learning environment.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Collaboration</h4>
+                    <p>Teaching is a team sport.</p>
+                    <ul>
+                        <li><strong>With Colleagues:</strong>Actively seek to share resources, co-plan units, and observe peers to learn from their practice. Believe in a culture of shared success, not competition.</li>
+                        <li><strong>With Parents/Families (for Young Learners):</strong> View parents as partners. Believe in proactive, positive communication to support the student's journey.</li>
+                        <li><strong>With the Community:</strong> Seek to connect classroom learning to the wider community through field trips, guest speakers, or service-learning projects, where possible.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Collaboration in Action</h2>
+            
+            <div class="framework-grid">
+                <div class="card">
+                    <h4>Push-in/pull-out coordination</h4>
+                    <ul>
+                        <li>Shared calendar; weekly 10-minute huddles; common templates for objectives and formative data.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Co-teaching models</h4>
+                    <ul>
+                        <li>One teach/one assist, station teaching, parallel groups, or team teach—selected per objective.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Resource sharing</h4>
+                    <ul>
+                        <li>Centralized folder of sentence stems, anchor charts, and bilingual glossaries organized by unit.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+  
+        
+        <div class="section">
+            <h2>Tools and Resources</h2>
+            <ul>
+                <li>Multilingual signage packs and visual schedules (self-made or district-approved).</li>
+                <li>Restorative questions card set (age-appropriate versions).</li>
+                <li>Timer/attention apps; noise level meters; random name selector.</li>
+                <li>Colorín Colorado and WIDA resources on environment and interaction.</li>
+                <li>District policies on language access, confidentiality, and professional conduct.</li>
+            </ul>
+        </div>
+  
+             
+          <div style="text-align: right;">
+    <a href="../index.html" style= "color: white";>back to main page</a>
+        </div>
+   </div>
+
+    </div>
+  
+    <footer>Classroom Management & Professionalism - TESOL Portfolio
+    </footer>
+    
+</body>
+</html>

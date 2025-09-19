@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blackboard Anchor Chart — Interlanguage & Language Progressions</title>
+<style>
+  /* Blackboard theme: black background, white chalk-like text, Comic Sans */
+  :root{
+    --bg:#000000;
+    --chalk:#ffffff;
+    --faint:#bfbfbf;
+  }
+
+  @font-face{
+    font-family:"Comic Sans MS";
+    src: local("Comic Sans MS"), local("Comic Sans");
+    /* Fallback to common playful fonts */
+  }
+
+  html,body{height:100%;}
+  body{
+    margin:0;
+    font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", "Trebuchet MS", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--chalk);
+    line-height:1.3;
+    letter-spacing:.2px;
+  }
+
+  /* Subtle blackboard texture using gradients */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.04), transparent 60%),
+      radial-gradient(900px 700px at 110% 10%, rgba(255,255,255,.03), transparent 60%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 2px, transparent 2px 5px),
+      linear-gradient(180deg, rgba(255,255,255,.03), transparent 60%);
+    pointer-events:none;
+  }
+
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(10px, 2vw, 22px);
+  }
+
+  .controls{
+    display:flex; justify-content:flex-end; gap:8px; margin: 6px 0 10px;
+  }
+  .btn{
+    border:2px solid var(--chalk);
+    background: transparent;
+    color: var(--chalk);
+    padding:8px 12px;
+    border-radius: 10px;
+    font-weight:700;
+    cursor:pointer;
+    text-shadow:0 1px 0 rgba(255,255,255,.08);
+    transition: transform .05s ease-in-out;
+  }
+  .btn:active{ transform: scale(.98); }
+
+  .page{
+    border: 3px solid var(--chalk);
+    border-radius: 16px;
+    padding: clamp(12px, 2.4vw, 22px);
+    position: relative;
+    box-shadow:
+      0 0 0 6px rgba(255,255,255,.03) inset,
+      0 0 40px rgba(0,0,0,.6);
+    overflow:hidden;
+  }
+
+  /* Chalk “smudge” edges */
+  .page::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(120px 80px at 10% 10%, rgba(255,255,255,.06), transparent 70%),
+      radial-gradient(160px 100px at 90% 8%, rgba(255,255,255,.05), transparent 70%),
+      radial-gradient(160px 100px at 92% 92%, rgba(255,255,255,.05), transparent 70%),
+      radial-gradient(160px 100px at 8% 92%, rgba(255,255,255,.05), transparent 70%);
+    pointer-events:none;
+  }
+
+  /* Section cards look chalk-drawn */
+  .card{
+    border:2px dashed rgba(255,255,255,.6);
+    border-radius:14px;
+    padding: clamp(12px, 2vw, 18px);
+    position:relative;
+    background: rgba(255,255,255,.02);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(10px, 1.6vw, 16px);
+  }
+  .col-12{ grid-column: span 12; }
+  .col-6{ grid-column: span 12; }
+  .col-4{ grid-column: span 12; }
+  .col-8{ grid-column: span 12; }
+  @media(min-width: 760px){
+    .col-6{ grid-column: span 6; }
+    .col-4{ grid-column: span 4; }
+    .col-8{ grid-column: span 8; }
+  }
+
+  /* Chalky headings */
+  h2, h3{
+    margin: 0 0 8px 0;
+    font-weight:900;
+    text-decoration: underline wavy rgba(255,255,255,.6);
+    text-underline-offset: 4px;
+  }
+  h2{ font-size: clamp(18px, 3.2vw, 28px); }
+  h3{ font-size: clamp(16px, 2.4vw, 22px); }
+
+  /* Hand-drawn doodle bullets */
+  .list{ margin: 6px 0 0 0; padding-left: 22px; }
+  .list li{ margin: 4px 0; }
+  .list li::marker{ content:"✦ "; }
+
+  /* Chips look like chalk sticker labels */
+  .chip{
+    display:inline-block;
+    color: var(--bg);
+    background: var(--chalk);
+    padding:4px 10px;
+    border-radius:999px;
+    font-weight:900;
+    margin:2px 6px 2px 0;
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset;
+  }
+
+  /* Example blocks with chalk boxes */
+  .example{
+    border:2px solid var(--chalk);
+    border-radius:12px;
+    padding:10px;
+    background: rgba(255,255,255,.03);
+    margin-top:8px;
+  }
+  .bad{ color:#fffc; text-decoration: line-through; }
+  .good{ color:#fff; font-weight:900; }
+
+  /* Fun chalk icons made from CSS only (white only) */
+  .icon{ width:24px; height:24px; display:inline-block; margin-right:6px; }
+  .i-ladder{ 
+    background:
+      linear-gradient(#fff,#fff) 8px 2px/2px 20px,
+      linear-gradient(#fff,#fff) 14px 2px/2px 20px,
+      linear-gradient(#fff,#fff) 6px 6px/12px 2px,
+      linear-gradient(#fff,#fff) 6px 12px/12px 2px,
+      linear-gradient(#fff,#fff) 6px 18px/12px 2px;
+    background-repeat:no-repeat;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,.5));
+  }
+  .i-bulb{
+    border-radius: 50% 50% 40% 40%;
+    background: radial-gradient(circle at 50% 45%, rgba(255,255,255,.95) 0 40%, rgba(255,255,255,.0) 41% 100%), 
+                radial-gradient(circle at 50% 40%, rgba(255,255,255,.7) 0 55%, rgba(255,255,255,0) 56% 100%);
+    box-shadow: inset 0 0 0 2px #fff;
+  }
+  .i-gear{
+    background:
+      radial-gradient(circle, transparent 35%, #fff 36% 38%, transparent 39% 100%),
+      conic-gradient(from 0deg, #fff 0 20deg, transparent 20deg 40deg, #fff 40deg 60deg, transparent 60deg 80deg, #fff 80deg 100deg, transparent 100deg 120deg, #fff 120deg 140deg, transparent 140deg 160deg, #fff 160deg 180deg, transparent 180deg 200deg, #fff 200deg 220deg, transparent 220deg 240deg, #fff 240deg 260deg, transparent 260deg 280deg, #fff 280deg 300deg, transparent 300deg 320deg, #fff 320deg 340deg, transparent 340deg 360deg);
+    filter: drop-shadow(0 0 2px rgba(255,255,255,.5));
+  }
+  .scribble{
+    border-top: 2px dashed rgba(255,255,255,.5);
+    margin:8px 0;
+  }
+
+  .callout{
+    border: 2px dotted var(--chalk);
+    padding:8px 10px;
+    border-radius:10px;
+    font-weight:900;
+    background: rgba(255,255,255,.04);
+  }
+
+  .mini{
+    font-size: .95em;
+    opacity:.95;
+  }
+
+  .titleless-gap{ height: 4px; } /* keeps spacing tidy where a title would be */
+
+  /* Print styling */
+  @media print {
+    body{ background:#000 !important; }
+    .controls{ display:none !important; }
+    .page{ box-shadow:none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="controls">
+      <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+      <button class="btn" onclick="toggleCompact()">Toggle Compact</button>
+    </div>
+
+    <section class="page" aria-label="Blackboard Anchor Chart">
+      <div class="titleless-gap"></div>
+
+      <div class="grid">
+        <article class="card col-6">
+          <h2><span class="icon i-ladder"></span>Interlanguage = Your In-Between English</h2>
+          <ul class="list">
+            <li>It’s the “bridge” between your first language and full English.</li>
+            <li>You use L1 + new English + smart guesses. That’s normal.</li>
+            <li>It changes as you practice. Growth = messy + awesome.</li>
+          </ul>
+          <div class="scribble"></div>
+          <div class="mini">
+            Level-up path: <span class="chip">Try</span><span class="chip">Notice</span><span class="chip">Fix</span><span class="chip">Grow</span>
+          </div>
+        </article>
+
+        <article class="card col-6">
+          <h2><span class="icon i-bulb"></span>Progress: From Try → Fluent (Wiggles Allowed)</h2>
+          <ul class="list">
+            <li><b>Starter</b>: words + gestures + pics</li>
+            <li><b>Builder</b>: short sentences (I go to school.)</li>
+            <li><b>Connector</b>: link ideas (because, but, so)</li>
+            <li><b>Shaper</b>: tenses, details, clauses</li>
+            <li><b>Refiner</b>: accuracy, idioms, style</li>
+          </ul>
+          <div class="callout">Mistakes = stepping stones. Step on them!</div>
+        </article>
+
+        <article class="card col-6">
+          <h2><span class="icon i-gear"></span>Fossilization = Stuck Errors (We Unstick ’Em)</h2>
+          <ul class="list">
+            <li>Happens when an error repeats so much it feels “normal”.</li>
+            <li>Examples: “She go to store”, “I am agree”, “He say me”.</li>
+          </ul>
+          <div class="example">
+            <div class="bad">✗ She go every day.</div>
+            <div class="good">✓ She goes every day. (Add -s for he/she/it.)</div>
+          </div>
+          <div class="scribble"></div>
+          <div class="mini">Unstick routine: <span class="chip">Hear it</span><span class="chip">Say it</span><span class="chip">See it</span><span class="chip">Write it</span><span class="chip">Use it</span></div>
+        </article>
+
+        <article class="card col-6">
+          <h2>Common Mix-Ups → Quick Fixes</h2>
+          <div class="example">
+            <div class="bad">✗ Yesterday I go to the park.</div>
+            <div class="good">✓ Yesterday I went to the park. (Irregular past.)</div>
+            <div class="bad">✗ I have pen. Sun is hot.</div>
+            <div class="good">✓ I have a pen. The sun is hot.</div>
+            <div class="bad">✗ I am good in English.</div>
+            <div class="good">✓ I am good at English.</div>
+            <div class="bad">✗ You are coming?</div>
+            <div class="good">✓ Are you coming?</div>
+            <div class="bad">✗ My mother she is a doctor.</div>
+            <div class="good">✓ My mother is a doctor.</div>
+          </div>
+          <div class="mini">Pro tip: underline the subject, circle the verb, box the ending.</div>
+        </article>
+
+        <article class="card col-8">
+          <h2>Strategy Toolbox (Use These Every Day)</h2>
+          <div class="grid">
+            <div class="col-4">
+              <h3>Listening</h3>
+              <ul class="list">
+                <li>Finger-track key words.</li>
+                <li>Catch endings: -s, -ed.</li>
+                <li>Signal words: yesterday, usually, now, next.</li>
+              </ul>
+            </div>
+            <div class="col-4">
+              <h3>Speaking</h3>
+              <ul class="list">
+                <li>I think … because …</li>
+                <li>Yesterday I … / Last week we …</li>
+                <li>Repair: Can you repeat? Let me try again.</li>
+              </ul>
+            </div>
+            <div class="col-4">
+              <h3>Reading</h3>
+              <ul class="list">
+                <li>Underline subjects; circle verbs.</li>
+                <li>Hunt connectors: but, so, because, however.</li>
+                <li>Word family: agree, agreement, disagree.</li>
+              </ul>
+            </div>
+            <div class="col-4">
+              <h3>Writing</h3>
+              <ul class="list">
+                <li>Line 1: subject + correct verb?</li>
+                <li>Line 2: a/an/the okay?</li>
+                <li>Line 3: time words + connectors?</li>
+              </ul>
+            </div>
+            <div class="col-8">
+              <h3>Error → Upgrade (Fast Class Routine)</h3>
+              <ol class="list">
+                <li>Notice it (highlight the “hmm”).</li>
+                <li>Compare it (peek at a model).</li>
+                <li>Fix it (say/write the upgrade).</li>
+                <li>Use it (new sentence, partner share).</li>
+                <li>Keep it (your personal Fix List).</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <article class="card col-4">
+          <h2>Pronunciation Mini-Map</h2>
+          <ul class="list">
+            <li>3rd person -s: /s/ (likes), /z/ (goes), /ɪz/ (watches)</li>
+            <li>-ed endings: /t/ (worked), /d/ (played), /ɪd/ (wanted)</li>
+          </ul>
+          <div class="callout">Chant it: likes—goes—watches • worked—played—wanted</div>
+        </article>
+
+        <article class="card col-12">
+          <h2>Classroom Doodles & Reminders</h2>
+          <ul class="list">
+            <li>Draw a 5-step ladder: Starter → Refiner.</li>
+            <li>Magnifying glass = “Notice it”.</li>
+            <li>Toolbelt = strategy power-ups.</li>
+            <li>Sticky area = “This week’s Fix List”.</li>
+          </ul>
+          <div class="callout">Reminder: Practice makes patterns. Small upgrades every day!</div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+<script>
+  function toggleCompact(){
+    document.querySelectorAll('.card').forEach(el=>{
+      el.classList.toggle('compact');
+    });
+  }
+</script>
+<style>
+  /* Compact mode for small screens or tighter print */
+  .card.compact{ padding:10px; }
+  .card.compact h2{ margin-bottom:4px; }
+  .card.compact .list li{ margin:2px 0; }
+</style>
+</body>
+</html>

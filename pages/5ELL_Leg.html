@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELL Legislation Obstacle Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 2px solid #444;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 20px 0 10px;
+            color: #ccc;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #444;
+            margin: 15px 0;
+        }
+
+        .materials-list, .rules-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .materials-list li, .rules-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .materials-list li:before, .rules-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #888;
+        }
+
+        .stations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .station-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .station-name {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        .station-detail {
+            margin-bottom: 10px;
+        }
+
+        .station-detail strong {
+            color: #ccc;
+        }
+
+        .discussion-script {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .discussion-question {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #888;
+        }
+
+        .benefit-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .question-stations {
+            margin-top: 40px;
+        }
+
+        .question-station {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .question-station-header {
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .question-card {
+            background-color: #1E1E1E;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .answer-text {
+            color: #aaa;
+            transform: rotate(180deg);
+            text-align: center;
+            padding: 5px;
+            background-color: #333;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Table Styles */
+        .stations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .stations-table th {
+            background-color: #333;
+            color: #fff;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .stations-table td {
+            padding: 12px;
+            border-bottom: 1px solid #444;
+            color: #ddd;
+        }
+
+        .stations-table tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        .stations-table tr:hover {
+            background-color: #3a3a3a;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container, .stations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .stations-table {
+                font-size: 0.9rem;
+            }
+
+            .stations-table th,
+            .stations-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ELL Legislation Obstacle Course</h1>
+        <p class="intro">A high-energy, interactive, and physically engaging game to learn about state legislation for ELLs</p>
+    </div>
+    <h2>Objective</h2>
+    <div class="card">
+        <div class="card-content">
+            <p>Teams race through an obstacle course, answering questions and completing physical challenges related to ELL legislation. The first team to finish wins, but everyone learns along the way!</p>
+        </div>
+    </div>
+    <h2>Game Setup</h2>
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-title">Materials Needed</div>
+            <div class="card-content">
+                <ul class="materials-list">
+                    <li>Open space (classroom, gym, or outdoor area)</li>
+                    <li>Cones, tape, or chalk to mark stations</li>
+                    <li>Printed question cards (or displayed on a tablet)</li>
+                    <li>Small prizes (e.g., stickers, certificates)</li>
+                    <li>Timer or stopwatch</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Obstacle Course Stations</div>
+            <div class="card-content">
+                <p>Set up 5-6 stations around the room/area. Each station focuses on a different aspect of ELL legislation (e.g., identification, screening, reclassification, LPAC, parent communication).</p>
+                <div class="divider"></div>
+                <p>At each station, teams must:</p>
+                <ol class="rules-list">
+                    <li>Answer a question about ELL legislation</li>
+                    <li>Complete a physical challenge</li>
+                    <li>Connect the legislation to a real-life scenario</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <h2>How to Play</h2>
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-title">Team Rally</div>
+            <div class="card-content">
+                <p>Form teams by finding classmates who share your favorite color or ice cream flavor! Teams of 3-4 players each.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Station Rules</div>
+            <div class="card-content">
+                <p>At each station, teams must:</p>
+                <ul class="rules-list">
+                    <li>Answer a question correctly (if wrong, they do 5 jumping jacks before moving on)</li>
+                    <li>Complete the physical challenge</li>
+                    <li>Share a real-life connection (e.g., "This law helps students by...")</li>
+                </ul>
+                <div class="divider"></div>
+                <p>Once completed, they move to the next station.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Winning the Game</div>
+            <div class="card-content">
+                <p>The first team to complete all stations wins, but all teams celebrate by sharing one thing they learned.</p>
+            </div>
+        </div>
+    </div>
+    <h2>Sample Stations and Challenges</h2>
+    <div class="stations-grid">
+        <div class="station-card">
+            <div class="station-name">Identification Station</div>
+            <div class="station-detail"><strong>Focus:</strong> How ELLs are identified</div>
+            <div class="station-detail"><strong>Question:</strong> "What is the first step in identifying an ELL student in Texas?"</div>
+            <div class="station-detail"><strong>Physical Challenge:</strong> Do 10 jumping jacks</div>
+            <div class="station-detail"><strong>Real-Life Connection:</strong> "How would you explain this process to a new parent?"</div>
+        </div>
+
+        <div class="station-card">
+            <div class="station-name">Screening Station</div>
+            <div class="station-detail"><strong>Focus:</strong> English proficiency screening</div>
+            <div class="station-detail"><strong>Question:</strong> "What test is used to screen ELLs in Texas?"</div>
+            <div class="station-detail"><strong>Physical Challenge:</strong> Balance a book on your head for 10 seconds</div>
+            <div class="station-detail"><strong>Real-Life Connection:</strong> "Why is it important to screen students quickly?"</div>
+        </div>
+
+        <div class="station-card">
+            <div class="station-name">LPAC Station</div>
+            <div class="station-detail"><strong>Focus:</strong> Role of LPAC</div>
+            <div class="station-detail"><strong>Question:</strong> "Who serves on the LPAC committee?"</div>
+            <div class="station-detail"><strong>Physical Challenge:</strong> Crab-walk to the next station</div>
+            <div class="station-detail"><strong>Real-Life Connection:</strong> "How does LPAC help students transition out of ELL programs?"</div>
+        </div>
+
+        <div class="station-card">
+            <div class="station-name">Reclassification Station</div>
+            <div class="station-detail"><strong>Focus:</strong> Criteria for reclassification</div>
+            <div class="station-detail"><strong>Question:</strong> "What are 2 criteria for reclassifying an ELL student in Texas?"</div>
+            <div class="station-detail"><strong>Physical Challenge:</strong> Hopscotch to the next station</div>
+            <div class="station-detail"><strong>Real-Life Connection:</strong> "How would you celebrate a student who is reclassified?"</div>
+        </div>
+
+        <div class="station-card">
+            <div class="station-name">Parent Communication Station</div>
+            <div class="station-detail"><strong>Focus:</strong> Parent rights and communication</div>
+            <div class="station-detail"><strong>Question:</strong> "What information must schools provide to parents of ELLs in Texas?"</div>
+            <div class="station-detail"><strong>Physical Challenge:</strong> Spin around 5 times, then walk straight</div>
+            <div class="station-detail"><strong>Real-Life Connection:</strong> "How can schools make sure parents understand their rights?"</div>
+        </div>
+    </div>
+
+    <!-- Stations Table -->
+    <h2>Stations Summary Table</h2>
+    <table class="stations-table">
+        <thead>
+            <tr>
+                <th>Station</th>
+                <th>Legislation Focus</th>
+                <th>Question Example</th>
+                <th>Physical Challenge</th>
+                <th>Real-Life Connection</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Identification Station</td>
+                <td>How ELLs are identified</td>
+                <td>"What is the first step in identifying an ELL student in Texas?"</td>
+                <td>Do 10 jumping jacks</td>
+                <td>"How would you explain this process to a new parent?"</td>
+            </tr>
+            <tr>
+                <td>Screening Station</td>
+                <td>English proficiency screening</td>
+                <td>"What test is used to screen ELLs in Texas?"</td>
+                <td>Balance a book on your head for 10 seconds</td>
+                <td>"Why is it important to screen students quickly?"</td>
+            </tr>
+            <tr>
+                <td>LPAC Station</td>
+                <td>Role of LPAC</td>
+                <td>"Who serves on the LPAC committee?"</td>
+                <td>Crab-walk to the next station</td>
+                <td>"How does LPAC help students transition out of ELL programs?"</td>
+            </tr>
+            <tr>
+                <td>Reclassification Station</td>
+                <td>Criteria for reclassification</td>
+                <td>"What are 2 criteria for reclassifying an ELL student in Texas?"</td>
+                <td>Hopscotch to the next station</td>
+                <td>"How would you celebrate a student who is reclassified?"</td>
+            </tr>
+            <tr>
+                <td>Parent Communication Station</td>
+                <td>Parent rights and communication</td>
+                <td>"What information must schools provide to parents of ELLs in Texas?"</td>
+                <td>Spin around 5 times, then walk straight</td>
+                <td>"How can schools make sure parents understand their rights?"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Discussion Script</h2>
+    <div class="discussion-script">
+        <p>After the game, gather everyone for a <strong>5-minute "Legislation Huddle"</strong>:</p>
+
+        <div class="discussion-question">
+            <p>"What was the hardest challenge? Why?"<br>
+            <em>(Connect physical challenges to the complexity of legislation.)</em></p>
+        </div>
+
+        <div class="discussion-question">
+            <p>"Which law do you think has the biggest impact on students? Why?"</p>
+        </div>
+
+        <div class="discussion-question">
+            <p>"How can we use what we learned today to support ELL students in our school?"</p>
+        </div>
+    </div>
+    <h2>Why This Works</h2>
+    <div class="cards-container">
+        <div class="benefit-card">
+            <div class="benefit-title">Physical Movement</div>
+            <p>Incorporates jumping, balancing, and racing to keep energy high</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-title">Teamwork</div>
+            <p>Encourages collaboration and discussion</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-title">Real-Life Connections</div>
+            <p>Ties legislation to student experiences</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-title">Minimal Materials</div>
+            <p>Uses everyday items and space</p>
+        </div>
+    </div>
+
+    <div class="question-stations">
+        <h2>Question Cards</h2>
+
+        <!-- Identification Station -->
+        <div class="question-station">
+            <div class="question-station-header" style="background-color: #2196F3;">Identification Station</div>
+            <div class="question-card">
+                <div class="question-text">1. What is the first step in identifying an ELL student in Texas?</div>
+                <div class="answer-text">↓ Administer a Home Language Survey (HLS) ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">2. Who is responsible for administering the Home Language Survey?</div>
+                <div class="answer-text">↓ Campus registrars or front office staff ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">3. True or False: Only students born outside the U.S. need to take the Home Language Survey.</div>
+                <div class="answer-text">↓ False: All new students must take it ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">4. What happens if a parent indicates a language other than English on the Home Language Survey?</div>
+                <div class="answer-text">↓ The student is tested for English proficiency ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">5. How many days does a school have to test a student for English proficiency after identifying them as a potential ELL?</div>
+                <div class="answer-text">↓ 20 school days ↓</div>
+            </div>
+        </div>
+
+        <!-- Screening Station -->
+        <div class="question-station">
+            <div class="question-station-header" style="background-color: #FFEB3B; color: #000;">Screening Station</div>
+            <div class="question-card">
+                <div class="question-text">1. What is the name of the English proficiency test used in Texas for ELLs?</div>
+                <div class="answer-text">↓ TELPAS (Texas English Language Proficiency Assessment System) ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">2. What are the four language domains assessed in TELPAS?</div>
+                <div class="answer-text">↓ Listening, Speaking, Reading, Writing ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">3. Who can administer the TELPAS test?</div>
+                <div class="answer-text">↓ Trained and certified school personnel ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">4. How often is TELPAS administered to ELL students?</div>
+                <div class="answer-text">↓ Annually, in the spring ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">5. What is the purpose of the TELPAS screening?</div>
+                <div class="answer-text">↓ To determine English proficiency and placement in ELL programs ↓</div>
+            </div>
+        </div>
+
+        <!-- LPAC Station -->
+        <div class="question-station">
+            <div class="question-station-header" style="background-color: #9C27B0;">LPAC Station</div>
+            <div class="question-card">
+                <div class="question-text">1. What does LPAC stand for?</div>
+                <div class="answer-text">↓ Language Proficiency Assessment Committee ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">2. Who must be part of the LPAC committee?</div>
+                <div class="answer-text">↓ A campus administrator, a teacher, and a parent (if possible) ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">3. What is one responsibility of the LPAC?</div>
+                <div class="answer-text">↓ Reviewing ELL student progress and making placement decisions ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">4. True or False: LPAC meetings are only held once a year.</div>
+                <div class="answer-text">↓ False: They meet as needed, often multiple times a year ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">5. What document does the LPAC provide to parents after reviewing a student's progress?</div>
+                <div class="answer-text">↓ A written explanation of the student's placement and progress ↓</div>
+            </div>
+        </div>
+
+        <!-- Reclassification Station -->
+        <div class="question-station">
+            <div class="question-station-header" style="background-color: #4CAF50;">Reclassification Station</div>
+            <div class="question-card">
+                <div class="question-text">1. What are the two main criteria for reclassifying an ELL student in Texas?</div>
+                <div class="answer-text">↓ Passing TELPAS and meeting state standards on STAAR ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">2. Who makes the final decision about reclassifying an ELL student?</div>
+                <div class="answer-text">↓ The LPAC committee ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">3. How many years of monitoring are required after a student is reclassified?</div>
+                <div class="answer-text">↓ 2 years ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">4. What happens if a reclassified student struggles academically?</div>
+                <div class="answer-text">↓ The LPAC may recommend additional support or interventions ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">5. True or False: Reclassified students no longer receive any ELL services.</div>
+                <div class="answer-text">↓ False: They may still receive support during the monitoring period ↓</div>
+            </div>
+        </div>
+
+        <!-- Parent Communication Station -->
+        <div class="question-station">
+            <div class="question-station-header" style="background-color: #E91E63;">Parent Communication Station</div>
+            <div class="question-card">
+                <div class="question-text">1. What information must schools provide to parents of ELLs within the first 2 weeks of school?</div>
+                <div class="answer-text">↓ Information about the ELL program and their child's placement ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">2. In what language should schools communicate with ELL parents?</div>
+                <div class="answer-text">↓ In a language they understand ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">3. What is one way schools can ensure ELL parents understand their rights?</div>
+                <div class="answer-text">↓ Provide translated documents and interpreters ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">4. True or False: Schools are required to hold meetings with ELL parents at least once a year.</div>
+                <div class="answer-text">↓ True ↓</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text">5. What is the purpose of the "Parent Rights" document given to ELL parents?</div>
+                <div class="answer-text">↓ To inform them of their rights and the ELL program details ↓</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding ACCESS/ELP Reports</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #8a2be2;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #9370db;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            color: #9370db;
+            margin: 10px 0 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #8a2be2;
+        }
+        
+        h3 {
+            color: #ba9cf5;
+            margin: 10px 0 8px;
+            font-size: 1.2rem;
+        }
+        
+        .section {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 0px;
+            margin-bottom: 0px;
+            border: 1px solid #333;
+        }
+        
+        .bilingual-line {
+            display: flex;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #2a2a2a;
+        }
+        
+        .english {
+            flex: 1;
+            padding-right: 15px;
+            border-right: 1px solid #444;
+        }
+        
+        .spanish {
+            flex: 1;
+            padding-left: 15px;
+        }
+        
+      
+        
+        ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .level {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 8px;
+            background: #2a2a2a;
+            border-radius: 5px;
+        }
+        
+        .color-box {
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+        
+        .level-1 { background-color: #e53935; }
+        .level-2 { background-color: #ffb74d; }
+        .level-3 { background-color: #fff176; }
+        .level-4 { background-color: #81c784; }
+        .level-5 { background-color: #4db6ac; }
+        .level-6 { background-color: #64b5f6; }
+        
+        .contact {
+            margin-top: 10px;
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            border: 1px solid #8a2be2;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #9370db;
+            margin-bottom: 0px;
+        }
+        
+        .emphasis {
+            color: #ba9cf5;
+            font-weight: bold;
+        }
+        
+        .levels-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .levels-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .bilingual-line {
+                flex-direction: column;
+            }
+            
+            .english {
+                padding-right: 0;
+                padding-bottom: 5px;
+                border-right: none;
+                border-bottom: 1px solid #444;
+            }
+            
+            .spanish {
+                padding-left: 0;
+                padding-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Handout for families: ACCESS/ELP Report Guide</div>
+        <h1>How to Read Your ACCESS/ELP Report<br>Guía para entender su informe ACCESS/ELP</h1>
+    </header>
+    
+    <div class="section">
+        <h2>What is the ACCESS/ELP Test?
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+            ¿Qué es el examen ACCESS/ELP?</h2>
+        
+        <div class="bilingual-line">
+            <div class="english">
+             
+                <p>The ACCESS for ELLs is an English language proficiency test designed to measure your student's progress in learning English.</p>
+            </div>
+            <div class="spanish">
+               
+                <p>ACCESS for ELLs es un examen de competencia en inglés diseñado para medir el progreso de su estudiante en el aprendizaje del inglés.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Understanding the Scores  &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+          &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        Entendiendo los resultados</h2>
+        
+        <div class="bilingual-line">
+            <div class="english">
+           
+                <p>Your child receives scores in four language domains:</p>
+                <ul>
+                    <li><span class="emphasis">Listening:</span> How well your child understands spoken English</li>
+                    <li><span class="emphasis">Speaking:</span> How well your child speaks English</li>
+                    <li><span class="emphasis">Reading:</span> How well your child reads English</li>
+                    <li><span class="emphasis">Writing:</span> How well your child writes in English</li>
+                </ul>
+            </div>
+            <div class="spanish">
+               
+                <p>Su hijo/a recibe puntajes en cuatro áreas del lenguaje:</p>
+                <ul>
+                    <li><span class="emphasis">Comprensión auditiva:</span> Qué tan bien su hijo/a entiende el inglés hablado</li>
+                    <li><span class="emphasis">Expresión oral:</span> Qué tan bien su hijo/a habla inglés</li>
+                    <li><span class="emphasis">Comprensión lectora:</span> Qué tan bien su hijo/a lee en inglés</li>
+                    <li><span class="emphasis">Expresión escrita:</span> Qué tan bien su hijo/a escribe en inglés</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Proficiency Levels  &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+      
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+          &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+          &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;Niveles de competencia</h2>
+        
+        <div class="levels-container">
+            <div>
+                <div class="level"><div class="color-box level-1"></div> Level 1: Entering - Beginning to understand English</div>
+                <div class="level"><div class="color-box level-2"></div> Level 2: Emerging - Starting to use English</div>
+                <div class="level"><div class="color-box level-3"></div> Level 3: Developing - Using English with support</div>
+            </div>
+            <div>
+   <div class="level"><div class="color-box level-1"></div> Nivel 1: Entrando - Comienza a entender inglés</div>
+                <div class="level"><div class="color-box level-2"></div> Nivel 2: Emergiendo - Empieza a usar inglés</div>
+                <div class="level"><div class="color-box level-3"></div> Nivel 3: Desarrollando - Usa inglés con apoyo</div>
+            </div>
+ <div>
+                  <div class="level"><div class="color-box level-4"></div> Level 4: Expanding - Using English independently</div>
+                <div class="level"><div class="color-box level-5"></div> Level 5: Bridging - Using English proficiently</div>
+                <div class="level"><div class="color-box level-6"></div> Level 6: Reaching - Full English proficiency</div>
+            </div>
+<div>                <div class="level"><div class="color-box level-4"></div> Nivel 4: Expandiendo - Usa inglés independientemente</div>
+                <div class="level"><div class="color-box level-5"></div> Nivel 5: Puenteando - Usa inglés con competencia</div>
+                <div class="level"><div class="color-box level-6"></div> Nivel 6: Alcanzando - Competencia completa en inglés</div>
+            </div>
+        </div>
+              </div >
+        </div>
+        
+    
+    
+    <div class="section">
+        <h2>Overall Composite Score 
+      
+     
+        &nbsp;
+        &nbsp;
+      
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+          &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;Puntuación compuesta general</h2>
+        
+        <div class="bilingual-line">
+            <div class="english">
+               
+                <p>This is the overall English proficiency score that combines all four domains. It shows your child's overall progress in learning English.</p>
+            </div>
+            <div class="spanish">
+                
+                <p>Esta es la puntuación general de competencia en inglés que combina las cuatro áreas. Muestra el progreso general de su hijo/a en el aprendizaje del inglés.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>How to Support Your Student 
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+          &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;Cómo apoyar a su estudiante</h2>
+        
+        <div class="bilingual-line">
+            <div class="english">
+          
+                <ul>
+                    <li>Talk with your child's teacher about their progress</li>
+                    <li>Encourage reading in both English and your home language</li>
+                    <li>Ask your child about their school day in your home language</li>
+                    <li>Provide opportunities for your child to practice English in real-life situations</li>
+                </ul>
+            </div>
+            <div class="spanish">
+              
+                <ul>
+                    <li>Hable con el maestro de su hijo sobre su progreso</li>
+                    <li>Fomente la lectura tanto en inglés como en su idioma natal</li>
+                    <li>Pregunte a su hijo sobre su día escolar en su idioma natal</li>
+                    <li>Proporcione oportunidades para que su hijo practique inglés en situaciones de la vida real</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contact">
+        <h2>Need More Information? &nbsp;
+          &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+          &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp¿Necesita más información?</h2>
+        <p>Contact your school's ESL/ELL department or your child's teacher<br>
+        Comuníquese con el departamento de ESL/ELL de su escuela o con el maestro de su hijo</p>
+    </div>
+</body>
+</html>
