@@ -1,0 +1,623 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="/usr/share/remarkable/media/highlightjs.default.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   @import url(http://fonts.googleapis.com/css?family=Indie+Flower);blockquote:after,blockquote:before{color:#000;font-size:2em;line-height:.1em;vertical-align:-.4em}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}body{font-family:Indie Flower,Daniel,cursive}h1,h2{text-align:center}blockquote{margin:1.5em 10px;padding:.5em 10px}blockquote:before{content:open-quote;margin-right:.25em}blockquote:after{content:close-quote;margin-left:.25em}blockquote p{display:inline}hr{border:0;border-top:dashed 2px gray}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr th{font-weight:700}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none;background:0 0}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  
+  <style>
+   :root{
+      --bg:#000;
+      --fg:#fff;
+      --muted:#bdbdbd;
+      --tile-fg:#ffffff;
+      --tile-size:140px;
+      --spin-time:1600ms;
+      --radius:520px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:#000;
+      color:#fff;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;
+      line-height:1.4;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    header{
+      padding:16px 20px 0 20px;
+      text-align:center;
+    }
+    h1{
+      margin:0 0 8px 0;
+      font-size:clamp(24px,4vw,42px);
+      letter-spacing:.5px;
+    }
+    .rules{
+      white-space:pre-line;
+      font-size:clamp(14px,2.8vw,18px);
+      color:#e8e8e8;
+      margin:0 auto;
+      max-width:980px;
+      border:1px solid #333;
+      border-radius:12px;
+      padding:12px 14px;
+      background:#0b0b0b;
+    }
+
+    /* Wheel section */
+    .wheel-wrap{
+      display:grid;
+      place-items:center;
+      padding:10px 16px;
+      gap:14px;
+    }
+    .wheel-area{
+      position:relative;
+      width:min(520px,92vw);
+      aspect-ratio:1/1;
+      display:grid;
+      place-items:center;
+    }
+    .wheel{
+      position:relative;
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      border:10px solid #222;
+      overflow:hidden;
+      background:#111;
+      box-shadow:0 0 0 2px #333 inset, 0 8px 30px rgba(0,0,0,.6);
+      transform:rotate(0deg);
+      transition:transform var(--spin-time) cubic-bezier(.2,.8,.2,1);
+    }
+    .slice{
+      position:absolute;
+      inset:0;
+      clip-path:polygon(50% 50%, 0% 0%, 100% 0%);
+      transform-origin:50% 50%;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top:8%;
+      font-weight:700;
+      font-size:clamp(16px,4.5vw,28px);
+      color:#000;
+      text-shadow:0 1px 2px rgba(255,255,255,.4);
+    }
+    .slice:nth-child(1){background:#ffd54f; transform:rotate(0deg);}     /* 3 */
+    .slice:nth-child(2){background:#4fc3f7; transform:rotate(120deg);}   /* 2 */
+    .slice:nth-child(3){background:#81c784; transform:rotate(240deg);}   /* 1 */
+
+    .pointer{
+      position:absolute;
+      top:-8px;
+      width:0;height:0;
+      border-left:14px solid transparent;
+      border-right:14px solid transparent;
+      border-bottom:18px solid #e91e63;
+      filter:drop-shadow(0 2px 0 #111);
+    }
+
+    .center-btn{
+      position:absolute;
+      width:40%;
+      aspect-ratio:1/1;
+      border-radius:50%;
+      background:#000;
+      border:4px solid #e0e0e0;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      user-select:none;
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+      box-shadow:0 6px 0 #222, inset 0 0 0 2px #111;
+      transition:transform .06s ease, box-shadow .06s ease;
+    }
+    .center-btn:active{ transform:translateY(2px); box-shadow:0 4px 0 #222, inset 0 0 0 2px #111; }
+
+    .result{
+      font-size:clamp(16px,5vw,28px);
+      font-weight:700;
+      letter-spacing:.4px;
+    }
+
+    /* Tiles */
+    .tiles{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(140px,1fr));
+      gap:12px;
+      padding:8px 14px 0 14px;
+      max-width:1100px;
+      margin:0 auto;
+      width:100%;
+    }
+    @media (max-width:900px){
+      .tiles{grid-template-columns:repeat(3, minmax(120px,1fr));}
+    }
+    @media (max-width:620px){
+      .tiles{grid-template-columns:repeat(2, minmax(120px,1fr));}
+    }
+    @media (max-width:420px){
+      :root{--tile-size:120px;}
+    }
+    .tile{
+      position:relative;
+      perspective:900px;
+      height:var(--tile-size);
+    }
+    .card{
+      position:absolute;
+      inset:0;
+      border-radius:14px;
+      color:var(--tile-fg);
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:10px;
+      font-weight:700;
+      border:2px solid rgba(255,255,255,.14);
+      backface-visibility:hidden;
+      transition:transform .5s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .card.front{
+      transform:rotateY(0deg);
+      background:#222; /* fallback, will be overwritten */
+    }
+    .card.back{
+      transform:rotateY(180deg);
+      background:#111;
+      font-weight:600;
+      font-size:clamp(12px,2.6vw,16px);
+      line-height:1.25;
+      padding:12px;
+      border:2px dashed rgba(255,255,255,.22);
+    }
+    .tile.flipped .front{ transform:rotateY(-180deg); }
+    .tile.flipped .back{ transform:rotateY(0deg); }
+
+    .label{
+      font-size:clamp(14px,3.2vw,18px);
+      letter-spacing:.4px;
+      text-transform:capitalize;
+    }
+
+    /* Timer controls */
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 12px;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      border-top:1px solid #222;
+      margin-top:4px;
+    }
+    .btn{
+      background:#111;
+      color:#fff;
+      border:2px solid #444;
+      border-radius:10px;
+      padding:10px 14px;
+      font-weight:700;
+      letter-spacing:.4px;
+      cursor:pointer;
+      transition:transform .05s ease, background .2s ease, border .2s ease;
+      user-select:none;
+    }
+    .btn:hover{ background:#151515; border-color:#666; }
+    .btn:active{ transform:translateY(1px); }
+    .time-display{
+      font-variant-numeric:tabular-nums;
+      font-size:clamp(16px,6vw,28px);
+      font-weight:800;
+      padding:6px 10px;
+      border:2px solid #444;
+      border-radius:10px;
+      min-width:120px;
+      text-align:center;
+      background:#0b0b0b;
+    }
+    .subtext{ color:#bdbdbd; font-size:14px; }
+
+    footer{
+      display:flex;
+      justify-content:center;
+      padding:8px 0 18px 0;
+    }
+  </style>
+  <header>
+   <h1>
+    3--2--1 English Run
+   </h1>
+   <p>
+   <strong>
+    A Fun, Fast-Paced Way to Boost Speaking &amp; Listening Skills
+   </strong>
+  </p>
+  <p>
+   I created the
+   <strong>
+    "3-2-1 English Run"
+   </strong>
+   to help English learners actually
+   <em>
+    use
+   </em>
+   the language—not just study it. Instead of boring drills or awkward forced conversations, this activity turns speaking practice into something
+   <strong>
+    interactive, fast-paced, and a little competitive
+   </strong>
+   (in a good way). Think of it like a game show for language skills—students get random prompts, a ticking clock, and a chance to practice real conversation under (light) pressure.
+  </p>
+  <p>
+   <strong>
+    Why This Works (The Brainy Stuff Behind It)
+   </strong>
+   This isn’t just a random game—I built it based on
+   <strong>
+    how people actually learn languages
+   </strong>
+   :
+-
+   <strong>
+    Vygotsky’s sociocultural theory
+   </strong>
+   (basically, we learn best through interaction and support). The activity pushes students to talk
+   <em>
+    with
+   </em>
+   each other, not just at a teacher.
+-
+   <strong>
+    The Output Hypothesis
+   </strong>
+   (the idea that
+   <em>
+    producing
+   </em>
+   language helps you learn it). The timer forces students to speak up quickly, which helps them get comfortable thinking on their feet.
+-
+   <strong>
+    Behaviorist principles
+   </strong>
+   (repetition + feedback = learning). The short, timed rounds give students
+   <strong>
+    instant practice and correction
+   </strong>
+   in a low-stakes way.
+  </p>
+  <p>
+   <strong>
+    How I’d Use It in Class
+   </strong>
+  </p>
+  <ol>
+   <li>
+    <p>
+     <strong>
+      First, as a Quick Check-In (Pre-Assessment)
+     </strong>
+     Before diving into lessons, I’d use this to see where students are at. The random prompt wheel means they can’t prepare—so I get to see their
+     <strong>
+      real-time speaking and listening skills
+     </strong>
+     . Do they struggle with vocabulary? Freeze up when clarifying? This tells me what to focus on later.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Then, as a Practice Tool (Mini-Lessons)
+     </strong>
+     After teaching a skill (like how to
+     <strong>
+      ask for clarification
+     </strong>
+     or
+     <strong>
+      compare ideas
+     </strong>
+     ), we’d use the 3-2-1 Run to practice it
+     <em>
+      right away
+     </em>
+     . For example:
+    </p>
+   </li>
+   <li>
+    If we just learned
+    <strong>
+     clarification phrases
+    </strong>
+    ("Wait, do you mean…?"), the wheel might land on a "Clarify" prompt, and students have to use those phrases in a real convo.
+   </li>
+   <li>
+    The timer keeps it snappy—
+    <strong>
+     3 minutes to talk, 2 to respond, 1 to wrap up
+    </strong>
+    —so no one overthinks. I can adjust the time based on their level (e.g., beginners get more time, advanced students get challenged with tighter deadlines).
+   </li>
+  </ol>
+  <p>
+   <strong>
+    Why Students Actually Like It
+   </strong>
+   - It’s
+   <strong>
+    not a test
+   </strong>
+   —it’s a game. The randomness and timer make it feel more like a challenge than a chore.
+- They
+   <strong>
+    hear and use real language
+   </strong>
+   , not just textbook phrases. The prompts are designed to mimic actual conversations.
+- It builds
+   <strong>
+    confidence fast
+   </strong>
+   because they’re practicing in short bursts with immediate feedback.
+  </p>
+  <p>
+   <strong>
+    TL;DR
+   </strong>
+   This activity takes the stress out of speaking practice by making it
+   <strong>
+    structured but fun, timed but not pressured, and social but not overwhelming
+   </strong>
+   . It’s not about perfection—it’s about
+   <strong>
+    getting comfortable with the messiness of real conversation
+   </strong>
+   . And honestly? That’s how you actually get better at a language.
+  </p>
+   <p class="rules">
+    RULES:
+3: key ideas (chat or notes).
+2: details
+1: one-sentence summary
+   </p>
+  </header>
+  <section aria-label="3-2-1 selector" class="wheel-wrap">
+   <div class="wheel-area">
+    <div aria-hidden="true" class="pointer">
+    </div>
+    <div aria-live="polite" class="wheel" id="wheel">
+     <div class="slice" data-val="3">
+      3
+     </div>
+     <div class="slice" data-val="2">
+      2
+     </div>
+     <div class="slice" data-val="1">
+      1
+     </div>
+    </div>
+    <button aria-label="Start selection" class="center-btn" id="spinBtn">
+     Start
+    </button>
+   </div>
+   <div class="result" id="result">
+    Selected: 0
+   </div>
+  </section>
+  <section aria-label="Talk tiles" class="tiles" id="tiles">
+   <!-- Tiles will be injected -->
+  </section>
+  <section aria-label="Timer controls" class="controls">
+   <button class="btn" id="minus10">
+    -10s
+   </button>
+   <button class="btn" id="plus10">
+    +10s
+   </button>
+   <button class="btn" id="resetTime">
+    Reset
+   </button>
+   <div class="time-display" id="time">
+    00:00
+   </div>
+   <button class="btn" id="startTime">
+    Start
+   </button>
+   <button class="btn" id="pauseTime">
+    Pause
+   </button>
+  </section>
+  <footer>
+   <button class="btn" id="playAgain">
+    Play again
+   </button>
+  </footer>
+  <script>
+   // Utility: random solid color generator ensuring readability on black
+    function randomColor() {
+      // Prefer mid/high saturation, mid/light luminance for contrast on white text
+      const h = Math.floor(Math.random()*360);
+      const s = 70 + Math.floor(Math.random()*25); // 70-94%
+      const l = 45 + Math.floor(Math.random()*15); // 45-59%
+      return `hsl(${h} ${s}% ${l}%)`;
+    }
+
+    // Shuffle helper
+    function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]];} return arr;}
+
+    // Tiles data
+    const tileData = [
+      { key:'starters', options:['I think…','I noticed…','In my view…'] },
+      { key:'evidence', options:['For example…','According to…','The data shows…'] },
+      { key:'compare/contrast', options:['In comparison…','However…','On the other hand…'] },
+      { key:'clarify', options:['Do you mean…?','Could you repeat that?','I’d like to clarify…'] },
+      { key:'agree/disagree', options:['I agree because…','I see it differently because…','I partially agree because…'] },
+      { key:'summary', options:['In short…','The main point is…','To summarize…'] },
+      { key:'pattern', options:['Who + did what + because + result','Result + because + reason','Claim + evidence + reasoning'] },
+      { key:'timer', options:['30s','60s','90s'] }
+    ];
+
+    // Build tiles with random solid colors
+    const tilesEl = document.getElementById('tiles');
+    function buildTiles(){
+      tilesEl.innerHTML = '';
+      // assign random colors per tile
+      const colors = tileData.map(()=>randomColor());
+      tileData.forEach((t,idx)=>{
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.setAttribute('role','button');
+        tile.setAttribute('tabindex','0');
+        tile.setAttribute('aria-label', `${t.key} tile, click to flip`);
+        const front = document.createElement('div');
+        front.className = 'card front';
+        front.style.background = colors[idx];
+        front.innerHTML = `<div class="label">${t.key}</div>`;
+        const back = document.createElement('div');
+        back.className = 'card back';
+        back.innerHTML = t.options.map(o=>`<div>${o}</div>`).join('<hr style="border:none;border-top:1px solid #333;margin:8px 0;" />');
+
+        tile.appendChild(front);
+        tile.appendChild(back);
+        tile.addEventListener('click', ()=> tile.classList.toggle('flipped'));
+        tile.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); tile.click(); } });
+        tilesEl.appendChild(tile);
+      });
+    }
+    buildTiles();
+
+    // Wheel logic
+    const wheel = document.getElementById('wheel');
+    const spinBtn = document.getElementById('spinBtn');
+    const resultEl = document.getElementById('result');
+    let spinning = false;
+    let currentAngle = 0;
+
+    function spinWheel(){
+      if(spinning) return;
+      spinning = true;
+      // choose 3,2,1 randomly
+      const outcomes = [3,2,1];
+      const val = outcomes[Math.floor(Math.random()*outcomes.length)];
+      // Each slice is 120deg. We want pointer at top to land on chosen slice center.
+      // Slice mapping when wheel at 0deg and pointer at top:
+      // 0-120deg: "3" at top; 120-240deg: "2"; 240-360deg: "1"
+      const sliceIndex = {3:0, 2:1, 1:2}[val];
+      const sliceAngle = 120;
+      const sliceCenter = sliceIndex*sliceAngle + sliceAngle/2; // center within 360 space
+      // We rotate wheel so that sliceCenter moves to 0deg (top).
+      // target rotation = base spins + adjustment
+      const spins = 3 + Math.floor(Math.random()*3); // 3-5 spins
+      // Convert desired final: -sliceCenter (so that that center aligns to pointer), plus 360*spins
+      const targetAngle = -(sliceCenter) + 360*spins;
+      currentAngle += targetAngle;
+      wheel.style.transform = `rotate(${currentAngle}deg)`;
+
+      setTimeout(()=>{
+        resultEl.textContent = `Selected: ${val}`;
+        spinning = false;
+      }, parseFloat(getComputedStyle(wheel).transitionDuration)*1000 || 1700);
+    }
+    spinBtn.addEventListener('click', spinWheel);
+
+    // Timer (up to 120s)
+    const timeEl = document.getElementById('time');
+    const minus10 = document.getElementById('minus10');
+    const plus10 = document.getElementById('plus10');
+    const resetTime = document.getElementById('resetTime');
+    const startTime = document.getElementById('startTime');
+    const pauseTime = document.getElementById('pauseTime');
+
+    let remaining = 0; // seconds
+    let timerId = null;
+
+    function renderTime(){
+      const m = Math.floor(remaining/60).toString().padStart(2,'0');
+      const s = (remaining%60).toString().padStart(2,'0');
+      timeEl.textContent = `${m}:${s}`;
+    }
+    function tick(){
+      if(remaining>0){
+        remaining--;
+        renderTime();
+        if(remaining===0){ clearInterval(timerId); timerId=null; flashTime(); }
+      }
+    }
+    function flashTime(){
+      let flashes = 0;
+      const maxFlashes = 6;
+      const base = timeEl.style.borderColor || '#444';
+      const id = setInterval(()=>{
+        timeEl.style.borderColor = (flashes%2===0)? '#e91e63' : '#44c2ff';
+        flashes++;
+        if(flashes>maxFlashes){ clearInterval(id); timeEl.style.borderColor = base; }
+      }, 180);
+    }
+
+    minus10.addEventListener('click', ()=>{
+      remaining = Math.max(0, remaining-10);
+      renderTime();
+    });
+    plus10.addEventListener('click', ()=>{
+      remaining = Math.min(120, remaining+10);
+      renderTime();
+    });
+    resetTime.addEventListener('click', ()=>{
+      remaining = 0;
+      renderTime();
+    });
+    startTime.addEventListener('click', ()=>{
+      if(timerId || remaining===0) return;
+      timerId = setInterval(tick, 1000);
+    });
+    pauseTime.addEventListener('click', ()=>{
+      if(timerId){ clearInterval(timerId); timerId=null; }
+    });
+    renderTime();
+
+    // Play again: reset everything (cards front, wheel to 0, result 0, new random tile colors)
+    document.getElementById('playAgain').addEventListener('click', ()=>{
+      // Reset tiles (rebuild for new colors and flip state)
+      buildTiles();
+      // Reset wheel
+      currentAngle = 0;
+      wheel.style.transform = `rotate(0deg)`;
+      resultEl.textContent = 'Selected: 0';
+      // Reset timer
+      if(timerId){ clearInterval(timerId); timerId=null; }
+      remaining = 0;
+      renderTime();
+      // Small pulse on Start button
+      spinBtn.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}], {duration:280, easing:'ease-out'});
+    });
+  </script>
+  <script src="/usr/share/remarkable/media/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
