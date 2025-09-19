@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Consequences</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 650px;
+            margin: 0 auto;
+            background: #222222;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+        .content {
+            display: flex;
+            flex: 1;
+            padding: 30px;
+            gap: 30px;
+        }
+        .consequences-container {
+            flex: 1;
+            background: #333333;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            color: #74b9ff;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #74b9ff;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .consequences-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .consequence-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .step-card {
+            background: #444444;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-left: 4px solid #74b9ff;
+        }
+        .step-card:nth-child(2) {
+            border-left-color: #4cd964;
+        }
+        .step-card:nth-child(3) {
+            border-left-color: #ff9500;
+        }
+        .step-card:nth-child(4) {
+            border-left-color: #ff3b30;
+        }
+        .step-card:nth-child(5) {
+            border-left-color: #af52de;
+        }
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .step-number {
+            background: #74b9ff;
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            color: #ffcc00;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .step-detail {
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+        .roles-section {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        .roles-title {
+            color: #74b9ff;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .role-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 15px;
+        }
+        .role-name {
+            color: #ffcc00;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .role-icon {
+            font-size: 1.2rem;
+        }
+        .philosophy {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .philosophy-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .philosophy-text {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Classroom Consequences</h1>
+            <h2>Restorative approaches to maintain a positive learning environment</h2>
+        </header>
+        
+        <div class="content">
+            <div class="consequences-container">
+                <div class="consequences-content">
+                    <div class="consequence-steps">
+                        <div class="step-card">
+                            <div class="step-icon">🙊</div>
+                            <div class="step-number">1</div>
+                            <div class="step-title">Non-verbal redirect</div>
+                            <div class="step-detail">Signal card or eye contact to redirect behavior</div>
+                        </div>
+                        
+                        <div class="step-card">
+                            <div class="step-icon">🤫</div>
+                            <div class="step-number">2</div>
+                            <div class="step-title">Private prompt with choice</div>
+                            <div class="step-detail">"Ready now or 1-minute reset?"</div>
+                        </div>
+                        
+                        <div class="step-card">
+                            <div class="step-icon">🔄</div>
+                            <div class="step-number">3</div>
+                            <div class="step-title">Role swap</div>
+                            <div class="step-detail">Reduce load with brief coaching and role rotation</div>
+                        </div>
+                        
+                        <div class="step-card">
+                            <div class="step-icon">📝</div>
+                            <div class="step-number">4</div>
+                            <div class="step-title">Reflect note</div>
+                            <div class="step-detail">30-second form: What happened? Next step?</div>
+                        </div>
+                        
+                        <div class="step-card">
+                            <div class="step-icon">📞</div>
+                            <div class="step-number">5</div>
+                            <div class="step-title">Follow-up</div>
+                            <div class="step-detail">After class check-in; pattern → program lead contact</div>
+                        </div>
+                    </div>
+                    
+                    <div class="roles-section">
+                        <div class="roles-title">Rotating Student Management Roles</div>
+                        <div class="roles-grid">
+                            <div class="role-card">
+                                <div class="role-name">
+                                    <span class="role-icon">⏱️</span>
+                                    Captain
+                                </div>
+                                <div class="step-detail">Keeps time, watches noise level signs, starts/ends tasks</div>
+                            </div>
+                            
+                            <div class="role-card">
+                                <div class="role-name">
+                                    <span class="role-icon">💬</span>
+                                    Language Coach
+                                </div>
+                                <div class="step-detail">Encourages target phrases, notes one great sentence for share-out</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="philosophy">
+                        <div class="philosophy-icon">🕊️</div>
+                        <div class="philosophy-text">
+                            Always calm, respectful, and restorative. Our goal is to maintain a positive learning environment where everyone feels safe and supported.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
