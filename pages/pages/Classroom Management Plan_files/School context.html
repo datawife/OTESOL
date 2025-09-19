@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Context</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            height: 700px;
+            margin: 0 auto;
+            background: #222222;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+        .content {
+            display: flex;
+            flex: 1;
+            padding: 30px;
+            gap: 30px;
+        }
+        .demographics, .teaching-mode {
+            flex: 1;
+            background: #333333;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            color: #74b9ff;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #74b9ff;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .info-box {
+            background: #444444;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .info-box h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .info-box p, .info-box ul {
+            margin-bottom: 12px;
+        }
+        .info-box ul {
+            padding-left: 20px;
+        }
+        .info-box li {
+            margin-bottom: 8px;
+        }
+        .highlight {
+            background: #0066cc;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .backup-plan {
+            background: #660000;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .backup-plan h4 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+        .icon {
+            font-size: 2rem;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>School Context</h1>
+            <h2>Demographics and Teaching Mode</h2>
+        </header>
+        
+        <div class="content">
+            <div class="demographics">
+                <div class="section-title">Demographics</div>
+                <div class="info-box">
+                    <h3>Student Profile</h3>
+                    <p>Adult learners from different cultural backgrounds, ages 18-65.</p>
+                    <div class="highlight">
+                        All students have similar English levels (A2-B1)
+                    </div>
+                    <p>They come from various countries and bring rich life experiences to the classroom.</p>
+                    <p>Many work full-time or part-time jobs and attend classes in the evening or weekends.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Learning Goals</h3>
+                    <div class="icon">🎯</div>
+                    <ul>
+                        <li>Workplace communication</li>
+                        <li>Everyday fluency</li>
+                        <li>Cultural integration</li>
+                        <li>Practical language skills</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="teaching-mode">
+                <div class="section-title">Teaching Mode</div>
+                <div class="info-box">
+                    <h3>Online Format</h3>
+                    <div class="icon">💻</div>
+                    <p>Classes happen through video conferencing. Students join from their homes, which means they have different setups and comfort levels with technology.</p>
+                    <p>The online format requires clear communication and simple procedures that work well on screen.</p>
+                    <p>Classes are conducted via Zoom or similar platforms, utilizing:</p>
+                    <ul>
+                        <li>Breakout rooms</li>
+                        <li>Interactive whiteboards</li>
+                        <li>Chat functions</li>
+                        <li>Collaborative digital tools (Google Workspace, Microsoft Teams)</li>
+                    </ul>
+                </div>
+                <div class="backup-plan">
+                    <h4>Backup Plan</h4>
+                    <p>To ensure accessibility for all students:</p>
+                    <ul>
+                        <li>Low-bandwidth tasks</li>
+                        <li>Phone-friendly slides</li>
+                        <li>Captions on videos</li>
+                        <li>Alternative communication channels</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>ESL Program Overview | Designed for Adult Learners</p>
+        </footer>
+    </div>
+</body>
+</html>

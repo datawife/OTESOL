@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Procedures</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 650px;
+            margin: 0 auto;
+            background: #222222;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+        .content {
+            display: flex;
+            flex: 1;
+            padding: 30px;
+            gap: 30px;
+        }
+        .procedures-container {
+            flex: 1;
+            background: #333333;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            color: #74b9ff;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #74b9ff;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .procedures-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .procedure-section {
+            background: #444444;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .procedure-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #74b9ff;
+            padding-bottom: 10px;
+        }
+        .procedure-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        .procedure-title {
+            color: #74b9ff;
+            font-size: 1.3rem;
+        }
+        .procedure-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 60px;
+        }
+        .icon-symbol {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .icon-label {
+            font-size: 0.7rem;
+            color: #cccccc;
+        }
+        .procedure-details {
+            padding-left: 20px;
+        }
+        .procedure-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .procedure-bullet {
+            color: #74b9ff;
+            font-weight: bold;
+            min-width: 20px;
+        }
+        .tpr-demo {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .tpr-demo h4 {
+            color: #74b9ff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .tpr-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .tpr-action {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        .tpr-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Classroom Procedures</h1>
+            <h2>Basic procedures to be followed before/after/during instructional time</h2>
+        </header>
+        
+        <div class="content">
+            <div class="procedures-container">
+                <div class="procedures-content">
+                    <div class="procedure-section">
+                        <div class="procedure-header">
+                            <div class="procedure-icon">⏰</div>
+                            <div class="procedure-title">Before Class</div>
+                        </div>
+                        <div class="procedure-icons">
+                            <div class="icon-item">
+                                <div class="icon-symbol">👥</div>
+                                <div class="icon-label">Join Early</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">🎤</div>
+                                <div class="icon-label">Test Mic</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">📹</div>
+                                <div class="icon-label">Test Camera</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">💬</div>
+                                <div class="icon-label">Message for Help</div>
+                            </div>
+                        </div>
+                        <div class="procedure-details">
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>Students join 2-3 minutes early if possible</span>
+                            </div>
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>They test their microphone and camera</span>
+                            </div>
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>If they have technical problems, they message me privately or use the chat to get help</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="procedure-section">
+                        <div class="procedure-header">
+                            <div class="procedure-icon">📚</div>
+                            <div class="procedure-title">During Class</div>
+                        </div>
+                        <div class="procedure-icons">
+                            <div class="icon-item">
+                                <div class="icon-symbol">👂</div>
+                                <div class="icon-label">TPR Listening</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">✍️</div>
+                                <div class="icon-label">TPR Writing</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">✋</div>
+                                <div class="icon-label">Virtual Hand</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">🔇</div>
+                                <div class="icon-label">Stay Muted</div>
+                            </div>
+                        </div>
+                        <div class="procedure-details">
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>We use TPR (Total Physical Response) for instructions</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tpr-demo">
+                            <h4>TPR Examples</h4>
+                            <div class="tpr-actions">
+                                <div class="tpr-action">
+                                    <div class="tpr-icon">👂</div>
+                                    <div>When I say "Listen," I cup my hand to my ear</div>
+                                </div>
+                                <div class="tpr-action">
+                                    <div class="tpr-icon">✍️</div>
+                                    <div>For "Write," I pretend to write in the air</div>
+                                </div>
+                            </div>
+                            <div class="procedure-item" style="margin-top: 15px;">
+                                <span class="procedure-bullet">•</span>
+                                <span>Students copy these actions to show they understand</span>
+                            </div>
+                        </div>
+                        
+                        <div class="procedure-details" style="margin-top: 15px;">
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>Speaking Turns: Students unmute when I call their name or when they raise their virtual hand</span>
+                            </div>
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>Everyone else stays muted unless doing group work in breakout rooms</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="procedure-section">
+                        <div class="procedure-header">
+                            <div class="procedure-icon">✅</div>
+                            <div class="procedure-title">After Class</div>
+                        </div>
+                        <div class="procedure-icons">
+                            <div class="icon-item">
+                                <div class="icon-symbol">❓</div>
+                                <div class="icon-label">Questions</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">💾</div>
+                                <div class="icon-label">Save Materials</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">📝</div>
+                                <div class="icon-label">Write Homework</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon-symbol">👋</div>
+                                <div class="icon-label">Goodbye</div>
+                            </div>
+                        </div>
+                        <div class="procedure-details">
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>Students can stay a few extra minutes for questions</span>
+                            </div>
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>They save any class materials to their computer</span>
+                            </div>
+                            <div class="procedure-item">
+                                <span class="procedure-bullet">•</span>
+                                <span>They write down homework in their notebook</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
